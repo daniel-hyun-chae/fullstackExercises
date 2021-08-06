@@ -1,0 +1,19 @@
+.notification {
+    background-color: aliceblue;
+    border-style: solid;
+    border-radius: 5px;
+    font-size: 20px;
+    color: green;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.error {
+    background-color: aliceblue;
+    border-style: solid;
+    border-radius: 5px;
+    font-size: 20px;
+    color: red;
+    padding: 10px;
+    margin-bottom: 10px;
+}

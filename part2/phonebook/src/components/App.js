@@ -57,7 +57,8 @@ const App = () => {
             createMessage("notification", `Updated ${updatedPerson.name}`)
           })
           .catch((err) => {
-            createMessage("error", `Information of ${existingPerson[0].name} has already been removed from server`)
+            console.log(err.response.data)
+            createMessage("error", err.response.data.error)
           })
       }
       return
@@ -69,8 +70,9 @@ const App = () => {
         setNewName('')
         setNewNumber('')
         createMessage("notification", `Created ${addedPerson.name}`)
-      }).catch((err) => {
-        alert(err)
+      }).catch(err => {
+        console.log(err.response.data)
+        createMessage("error", err.response.data.error)
       })
   }
 
@@ -79,7 +81,10 @@ const App = () => {
     if (confirm) {
       personService
         .remove(personToDelete.id)
-        .then(setPersons(persons.filter(person => person.name !== personToDelete.name)))
+        .then(
+          setPersons(persons.filter(person => person.name !== personToDelete.name)),
+          createMessage("notification", `Delete ${personToDelete.name}`)
+        )
         .catch(err => {
           createMessage("error", `Information of ${personToDelete.name} has already been removed from server`)
         })

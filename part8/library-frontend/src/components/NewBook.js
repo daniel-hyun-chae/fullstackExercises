@@ -50,12 +50,13 @@ const NewBook = (props) => {
 
   return (
     <div>
-      <form onSubmit={submit}>
+      <form onSubmit={submit} className="space-y-2">
         <div>
           title
           <input
             value={title}
             onChange={({ target }) => setTitle(target.value)}
+            className="ml-3 border-b-2 px-3 py-1"
           />
         </div>
         <div>
@@ -63,6 +64,7 @@ const NewBook = (props) => {
           <input
             value={author}
             onChange={({ target }) => setAuthor(target.value)}
+            className="ml-3 border-b-2 px-3 py-1"
           />
         </div>
         <div>
@@ -71,19 +73,21 @@ const NewBook = (props) => {
             type='number'
             value={published}
             onChange={({ target }) => setPublished(target.value)}
+            className="ml-3 border-b-2 px-3 py-1"
           />
         </div>
         <div>
           <input
             value={genre}
             onChange={({ target }) => setGenre(target.value)}
+            className="mr-3 border-b-2 px-3 py-1"
           />
-          <button onClick={addGenre} type="button">add genre</button>
+          <button onClick={addGenre} type="button" className='btn-sm'>add genre</button>
         </div>
         <div>
-          genres: {genres.join(' ')}
+          genres added: {genres.join(' ')}
         </div>
-        <button type='submit'>create book</button>
+        <button className='btn-sm' type='submit'>create book</button>
       </form>
     </div>
   )

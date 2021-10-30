@@ -7,12 +7,15 @@ import Books from './components/Books'
 import Login from './components/Login'
 import NewBook from './components/NewBook'
 import Recommendation from './components/Recommendation'
+import Notification from './components/Notification'
 
 import { ALL_AUTHORS, ALL_BOOKS, BOOK_ADDED, ME } from './queries'
 
 const App = () => {
   const [page, setPage] = useState('authors')
   const [token, setToken] = useState(null)
+  const [message, setMessage] = useState('')
+  const [messageType, setMessageType] = useState('')
   const [favoriteGenre, setFavoriteGenre] = useState(null)
   const client = useApolloClient()
   const [getMe, meResult] = useLazyQuery(ME)
@@ -72,6 +75,12 @@ const App = () => {
         data: { allAuthors: authorsInStore.allAuthors.concat(addedBook.author) }
       })
     }
+    setMessageType("notification")
+    setMessage(`${addedBook.title} by ${addedBook.author.name} added!`)
+    setTimeout(()=>{
+      setMessageType("")
+      setMessage("")
+    }, 3000)
   }
 
   useSubscription(BOOK_ADDED, {
@@ -88,15 +97,18 @@ const App = () => {
   }
 
   return (
-    <div>
-      <div>
-        <button onClick={() => setPage('authors')}>authors</button>
-        <button onClick={() => setPage('books')}>books</button>
-        {token ? <button onClick={() => setPage('add')}>add book</button>: null}
-        {token ? <button onClick={() => setPage('recommend')}>recommend</button>: null}
-        {token ? <button onClick={handleLogout}>logout</button>:<button onClick={() => setPage('login')}>login</button>}
+    <div className="container mx-auto">
+      <div className="space-x-2 mb-5">
+        <button className="btn" onClick={() => setPage('authors')}>authors</button>
+        <button className="btn" onClick={() => setPage('books')}>books</button>
+        {token ? <button className="btn" onClick={() => setPage('add')}>add book</button>: null}
+        {token ? <button className="btn" onClick={() => setPage('recommend')}>recommend</button>: null}
+        {token ? <button className="btn" onClick={handleLogout}>logout</button>:<button className="btn"onClick={() => setPage('login')}>login</button>}
       </div>
-
+      <Notification 
+        message={message}
+        messageType={messageType}
+      />
       <Authors
         show={page === 'authors'}
         showBirthYearForm={!!token}

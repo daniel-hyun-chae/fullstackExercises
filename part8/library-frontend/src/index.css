@@ -1,0 +1,12 @@
+/* ./src/index.css */
+@tailwind base;
+@tailwind components;
+.btn {
+  @apply inline-block px-5 py-2 rounded-lg shadow-lg bg-indigo-500 text-white uppercase font-semibold text-sm sm:text-base;
+}
+
+.btn-sm {
+  @apply inline-block px-2 py-1 rounded-lg shadow-lg bg-blue-500 text-white uppercase font-semibold text-sm sm:text-base;
+}
+
+@tailwind utilities;

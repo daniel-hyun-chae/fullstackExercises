@@ -23,28 +23,28 @@ const Recommendation = ({show, loading, favoriteGenre}) => {
 
     return (
         <div>
-            <h2>Recommendations</h2>
+            <h2 className="text-2xl uppercase">Recommendations</h2>
             <div>Books in your favorite genre {favoriteGenre}</div>
-            <table>
-        <tbody>
-          <tr>
-            <th></th>
-            <th>
-              author
-            </th>
-            <th>
-              published
-            </th>
-          </tr>
-          {books.map(a =>
-            <tr key={a.title}>
-              <td>{a.title}</td>
-              <td>{a.author.name}</td>
-              <td>{a.published}</td>
+        <table className="my-5">
+          <tbody>
+            <tr>
+              <th></th>
+              <th className="border px-2 py-1">
+                author
+              </th>
+              <th className="border px-2 py-1">
+                published
+              </th>
             </tr>
-          )}
-        </tbody>
-      </table>
+            {books.map(a =>
+              <tr key={a.title}>
+                <td className="border px-2 py-1">{a.title}</td>
+                <td className="border px-2 py-1">{a.author.name}</td>
+                <td className="border px-2 py-1">{a.published}</td>
+              </tr>
+            )}
+          </tbody>
+        </table>
         </div>
         
     )

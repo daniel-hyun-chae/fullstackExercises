@@ -34,16 +34,17 @@ const Login = ({setToken, show, setPage}) => {
 
     return (
         <div>
-            <form onSubmit={handleLogin}>
+            <h2 className="text-2xl uppercase">login</h2>
+            <form className="my-5" onSubmit={handleLogin}>
                 <div>
                     Name 
-                    <input value={username} onChange={event=>setName(event.target.value)}/>
+                    <input className="ml-3 border-b-2 px-3 py-1" value={username} onChange={event=>setName(event.target.value)}/>
                 </div>        
                 <div>
                     Password 
-                    <input value={password} type='password' onChange={event=>setPassword(event.target.value)}/>
+                    <input className="ml-3 border-b-2 px-3 py-1" value={password} type='password' onChange={event=>setPassword(event.target.value)}/>
                 </div>
-                <button type='submit'>Login</button>
+                <button type='submit' className="mt-5 btn-sm">Login</button>
             </form>
         </div>
 

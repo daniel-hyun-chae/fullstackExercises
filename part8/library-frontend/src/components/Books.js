@@ -27,30 +27,31 @@ const Books = (props) => {
 
   return (
     <div>
-      <h2>books</h2>
-
-      <table>
+      <h2 className="text-2xl uppercase">books</h2>
+      <table className="my-5">
         <tbody>
           <tr>
             <th></th>
-            <th>
+            <th className="border px-2 py-1">
               author
             </th>
-            <th>
+            <th className="border px-2 py-1">
               published
             </th>
           </tr>
           {filteredBooks.map(a =>
             <tr key={a.title}>
-              <td>{a.title}</td>
-              <td>{a.author.name}</td>
-              <td>{a.published}</td>
+              <td className="border px-2 py-1">{a.title}</td>
+              <td className="border px-2 py-1">{a.author.name}</td>
+              <td className="border px-2 py-1">{a.published}</td>
             </tr>
           )}
         </tbody>
       </table>
-      {genres.map(genre => <button key={genre} onClick={event=>setGenre(genre)}>{genre}</button>)}
-      <button onClick={event=>setGenre('all')}>All genres</button>
+      <div className="space-x-2">
+        {genres.map(genre => <button className="btn-sm" key={genre} onClick={event=>setGenre(genre)}>{genre}</button>)}
+        <button className="btn-sm" onClick={event=>setGenre('all')}>All genres</button>
+      </div>
     </div>
   )
 }

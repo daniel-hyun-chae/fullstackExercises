@@ -15,23 +15,23 @@ const Authors = (props) => {
 
   return (
     <div>
-      <h2>authors</h2>
-      <table>
+      <h2 className="text-2xl uppercase">authors</h2>
+      <table className="my-5">
         <tbody>
           <tr>
             <th></th>
-            <th>
+            <th className="border px-2 py-1">
               born
             </th>
-            <th>
+            <th className="border px-2 py-1">
               books
             </th>
           </tr>
           {authors.map(a =>
             <tr key={a.name}>
-              <td>{a.name}</td>
-              <td>{a.born}</td>
-              <td>{a.bookCount}</td>
+              <td className="border px-2 py-1">{a.name}</td>
+              <td className="border px-2 py-1">{a.born}</td>
+              <td className="border px-2 py-1">{a.bookCount}</td>
             </tr>
           )}
         </tbody>
